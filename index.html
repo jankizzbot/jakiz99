@@ -1,216 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JANKIZ OFFICIAL</title>
-<<<<<<< HEAD
-=======
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jankiz Hex | Official Links</title>  <!-- Font Awesome Icons -->  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
->>>>>>> c6dfb3cbf561ed8ac6fa67d2762a92db5d9b4ae2
-<style>
-/* ================= BASE ================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', system-ui, sans-serif;
-}
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #000000, #0a0a0a);
-  color: #fff;
-}
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 30px 25px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      animation: fadeIn 1.2s ease;
+    }
 
-/* ================= GLOW EFFECT ================= */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(255, 200, 80, 0.25), transparent 40%),
-    radial-gradient(circle at 70% 70%, rgba(255, 100, 40, 0.2), transparent 50%);
-  z-index: -2;
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-.wrapper {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
-}
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      font-weight: bold;
+    }
 
-.container {
-  max-width: 500px;
-  width: 100%;
-  background: rgba(10, 10, 10, 0.9);
-  border-radius: 20px;
-  padding: 40px;
-  border: 1px solid rgba(255, 200, 80, 0.3);
-  box-shadow:
-    0 0 60px rgba(255, 200, 80, 0.5),
-    inset 0 0 40px rgba(255, 200, 80, 0.1);
-}
+    h1 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
 
-/* ================= HEADER ================= */
-.header {
-  text-align: center;
-  margin-bottom: 30px;
-}
+    p {
+      font-size: 14px;
+      opacity: 0.85;
+      margin-bottom: 25px;
+    }
 
-.header h1 {
-  font-size: 2.5rem;
-  color: #ffd27a;
-  text-shadow: 0 0 30px rgba(255, 200, 80, 0.8);
-  letter-spacing: 3px;
-}
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-.header p {
-  font-size: 1rem;
-  color: #d4c39a;
-  margin-top: 10px;
-  line-height: 1.5;
-}
+    .link {
+      text-decoration: none;
+      color: #fff;
+      padding: 15px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
 
-/* ================= LINKS ================= */
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+    .link i {
+      font-size: 22px;
+    }
 
-.link {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 15px 20px;
-  border-radius: 15px;
-  text-decoration: none;
-  color: #fff;
-  background: linear-gradient(135deg, #0b0b0b, #121212);
-  border: 1px solid rgba(255, 200, 80, 0.25);
-  transition: 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
+    .instagram {
+      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
+    }
 
-.link:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 0 40px rgba(255, 200, 80, 0.8);
-}
+    .youtube {
+      background: #ff0000;
+    }
 
-.icon {
-  width: 50px;
-  height: 50px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  background: rgba(255, 200, 80, 0.15);
-  box-shadow: inset 0 0 10px rgba(255, 200, 80, 0.4);
-}
+    .telegram {
+      background: #0088cc;
+    }
 
-.icon svg {
-  width: 28px;
-  height: 28px;
-  fill: #ffd27a;
-}
+    .link:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+    }
 
-.text span {
-  font-size: 1.15rem;
-  font-weight: 600;
-}
+    footer {
+      margin-top: 25px;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  </style></head>
+<body>  <div class="container">
+    <div class="avatar">JH</div>
+    <h1>Jankiz Hex</h1>
+    <p>تابعني على جميع منصات التواصل الاجتماعي</p><div class="links">
+  <a class="link instagram" href="https://www.instagram.com/jankiz.hex?igsh=djRnMDF1b2t6dndk" target="_blank">
+    <i class="fab fa-instagram"></i>
+    إنستقرام
+  </a>
 
-.text small {
-  display: block;
-  font-size: 0.85rem;
-  color: #c9b88f;
-}
+  <a class="link youtube" href="https://youtube.com/@jankizhex7789?si=ASnSoM7vWUNJuBlw" target="_blank">
+    <i class="fab fa-youtube"></i>
+    يوتيوب
+  </a>
 
-</style>
-</head>
-<body>
-
-<div class="wrapper">
-  <div class="container">
-<<<<<<< HEAD
-    <!-- HEADER -->
-    <div class="header">
-      <h1>JANKIZ</h1>
-      <p>Welcome to the official JANKIZ page.<br>All verified platforms in one place.</p>
-    </div>
-
-    <!-- LINKS -->
-    <div class="links">
-
-      <!-- Instagram -->
-      <a class="link" href="https://www.instagram.com/jankiz.hex?igsh=djRnMDF1b2t6dndk" target="_blank">
-=======
-
-    <!-- ================= WELCOME ================= -->
-    <div class="welcome">
-      <h1>JANKIZ</h1>
-      <p>
-        Welcome to JANKIZ official page.<br>
-        All my verified platforms are in one place.
-      </p>
-    </div>
-
-    <!-- ================= LINKS ================= -->
-    <div class="links">
-
-      <a class="link" href="https://www.instagram.com/hexjankiz" target="_blank">
->>>>>>> c6dfb3cbf561ed8ac6fa67d2762a92db5d9b4ae2
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 100 10 5 5 0 000-10zm6.5-.5a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/>
-          </svg>
-        </div>
-        <div class="text">
-          <span>Instagram</span>
-          <small>@hexjankiz</small>
-        </div>
-      </a>
-
-      <!-- Telegram -->
-      <a class="link" href="https://t.me/HexJankiz1111" target="_blank">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M22 3L2 12l5 2 2 6 4-4 5 4 5-17z"/>
-          </svg>
-        </div>
-        <div class="text">
-          <span>Telegram</span>
-          <small>@HexJankiz1111</small>
-        </div>
-      </a>
-
-<<<<<<< HEAD
-      <!-- YouTube -->
-      <a class="link" href="https://youtube.com/@jankizhex7789?si=v_nzF8HXv4q81d2z" target="_blank">
-=======
-      <a class="link" href="https://youtube.com/@hexjankiz" target="_blank">
->>>>>>> c6dfb3cbf561ed8ac6fa67d2762a92db5d9b4ae2
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M23 7s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C16.9 3 12 3 12 3s-4.9 0-8.1.6c-.4.1-1.3.1-2.1 1C1.2 5.3 1 7 1 7S.8 9 .8 11v2c0 2 .2 4 .2 4s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 7.8.6 7.8.6s4.9 0 8.1-.6c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-2 .2-4v-2c0-2-.2-4-.2-4zM9.8 14.5v-5l5.2 2.5-5.2 2.5z"/>
-          </svg>
-        </div>
-        <div class="text">
-          <span>YouTube</span>
-<<<<<<< HEAD
-          <small>@jankizhex7789</small>
-=======
-          <small>@hexjankiz</small>
->>>>>>> c6dfb3cbf561ed8ac6fa67d2762a92db5d9b4ae2
-        </div>
-      </a>
-
-    </div>
-  </div>
+  <a class="link telegram" href="https://t.me/HexJankiz1111" target="_blank">
+    <i class="fab fa-telegram"></i>
+    تيليجرام
+  </a>
 </div>
 
-</body>
+<footer>
+  © 2026 Jankiz Hex
+</footer>
+
+  </div>  <script>
+    // تأثير بسيط عند الضغط
+    document.querySelectorAll('.link').forEach(link => {
+      link.addEventListener('click', () => {
+        link.style.opacity = '0.85';
+        setTimeout(() => link.style.opacity = '1', 150);
+      });
+    });
+  </script></body>
 </html>
