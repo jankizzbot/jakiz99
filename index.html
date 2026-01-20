@@ -1,258 +1,409 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jankiz Hex | Cyber</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JANKIZ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-:root{
-  --neon:#00f7ff;
-  --vio:#8a2be2;
-  --bg:#03070f;
-}
-*{
-  margin:0;padding:0;box-sizing:border-box;
-  font-family:'Segoe UI',Tahoma;
-  user-select:none;
-}
-body{
-  min-height:100vh;
-  background:radial-gradient(1200px 600px at 10% 10%, #0b1b2a 0%, #03070f 50%, #000 100%);
-  color:#eaffff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
 
-/* خلفية سيبرانية */
-#bg{position:fixed;inset:0;z-index:0}
-.grid{
-  position:absolute;inset:-60%;
-  background:
-    linear-gradient(rgba(0,247,255,.15) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,247,255,.15) 1px, transparent 1px);
-  background-size:35px 35px;
-  transform:perspective(800px) rotateX(70deg) translateY(200px);
-  animation:grid 14s linear infinite;
-  opacity:.35;
-}
-@keyframes grid{
-  to{transform:perspective(800px) rotateX(70deg) translateY(0)}
-}
+        /* Digital Rain Background */
+        .matrix-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
 
-.rain{
-  position:absolute;inset:0;
-  background-image:
-    repeating-linear-gradient(transparent,transparent 16px,rgba(0,247,255,.2) 17px,rgba(0,247,255,.2) 18px),
-    repeating-linear-gradient(90deg,transparent,transparent 24px,rgba(138,43,226,.2) 25px,rgba(138,43,226,.2) 26px);
-  animation:rain 6s linear infinite;
-  opacity:.35;
-}
-@keyframes rain{
-  to{background-position:0 500px,500px 0}
-}
+        .matrix-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
 
-/* الحاوية */
-.container{
-  position:relative;z-index:2;
-  width:100%;max-width:420px;
-  padding:28px 24px;
-  border-radius:20px;
-  text-align:center;
-  background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.03));
-  backdrop-filter:blur(18px);
-  box-shadow:
-    0 0 0 1px rgba(0,247,255,.4) inset,
-    0 0 40px rgba(0,247,255,.5),
-    0 0 90px rgba(138,43,226,.5),
-    0 30px 70px rgba(0,0,0,.7);
-  animation:pop .9s ease;
-}
-@keyframes pop{
-  from{opacity:0;transform:translateY(30px) scale(.95)}
-  to{opacity:1;transform:none}
-}
+        .matrix-column {
+            position: absolute;
+            top: -100%;
+            width: 18px;
+            height: 100%;
+            font-size: 14px;
+            line-height: 16px;
+            font-weight: bold;
+            animation: fall linear infinite;
+            white-space: nowrap;
+            opacity: 0.7;
+        }
 
-/* الصورة الرمزية */
-.avatar{
-  width:110px;height:110px;
-  border-radius:50%;
-  margin:0 auto 12px;
-  background:radial-gradient(circle at 30% 30%,#2bffff,#0aa3ff 35%,#6a00ff 70%,#120019 100%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:40px;
-  font-weight:800;
-  box-shadow:
-    0 0 0 3px rgba(0,247,255,.8) inset,
-    0 0 35px rgba(0,247,255,.9),
-    0 0 70px rgba(138,43,226,.8);
-}
+        .matrix-column::before {
+            content: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()アイウエオカキクケコサシスセソタチツテト";
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(
+                to bottom,
+                #ffffff 0%,
+                #ffffff 5%,
+                #00ff41 10%,
+                #00ff41 20%,
+                #00dd33 30%,
+                #00bb22 40%,
+                #009911 50%,
+                #007700 60%,
+                #005500 70%,
+                #003300 80%,
+                rgba(0, 255, 65, 0.5) 90%,
+                transparent 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            writing-mode: vertical-lr;
+            letter-spacing: 0.5px;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-/* Glitch */
-.glitch{position:relative;display:inline-block}
-.glitch::before,.glitch::after{
-  content:attr(data-text);
-  position:absolute;left:0;top:0;width:100%;
-  overflow:hidden;
-}
-.glitch::before{
-  color:var(--neon);
-  clip-path:inset(0 0 60% 0);
-  animation:g1 1.8s infinite;
-}
-.glitch::after{
-  color:var(--vio);
-  clip-path:inset(60% 0 0 0);
-  animation:g2 2s infinite;
-}
-@keyframes g1{from{transform:translate(0)}to{transform:translate(2px,-2px)}}
-@keyframes g2{from{transform:translate(0)}to{transform:translate(-2px,2px)}}
+        /* Main Content */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+        }
 
-h1{
-  font-size:26px;
-  margin:8px 0 6px;
-  text-shadow:
-    0 0 8px rgba(0,247,255,.9),
-    0 0 20px rgba(0,247,255,.8),
-    0 0 40px rgba(138,43,226,.8);
-}
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+            max-width: 800px;
+            width: 100%;
+        }
 
-.links{
-  display:flex;
-  flex-direction:column;
-  gap:13px;
-  margin-top:16px;
-}
-.link{
-  text-decoration:none;
-  color:#fff;
-  padding:15px 16px;
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-  font-size:17px;
-  font-weight:700;
-  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.04));
-  border:1px solid rgba(0,247,255,.5);
-  box-shadow:
-    0 0 0 1px rgba(0,247,255,.25) inset,
-    0 0 30px rgba(0,247,255,.5),
-    0 12px 30px rgba(0,0,0,.6);
-  transition:.25s ease;
-  position:relative;
-  overflow:hidden;
-}
-.link::before{
-  content:"";
-  position:absolute;
-  inset:-200% -50%;
-  background:linear-gradient(120deg,transparent 40%,rgba(0,247,255,.5),transparent 60%);
-  transform:translateX(-60%);
-  transition:.6s;
-}
-.link:hover{
-  transform:translateY(-4px) scale(1.02);
-  box-shadow:
-    0 0 40px rgba(0,247,255,1),
-    0 0 90px rgba(138,43,226,.9);
-}
-.link:hover::before{transform:translateX(60%)}
+        .logo-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            border: 3px solid #00ff41;
+            box-shadow: 0 0 30px #00ff41;
+            object-fit: cover;
+            animation: glow 2s infinite alternate;
+        }
 
-/* ألوان الأيقونات الحقيقية */
-.instagram i{color:#E4405F}
-.youtube i{color:#FF0000}
-.telegram i{color:#0088cc}
-.whatsapp i{color:#25D366}
+        .welcome-text {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #fff;
+        }
 
-footer{
-  margin-top:18px;
-  font-size:13px;
-  font-weight:600;
-  opacity:.95;
-  text-shadow:0 0 12px rgba(0,247,255,.9),0 0 30px rgba(138,43,226,.9);
-}
-.verify{
-  color:#00ff88;
-  margin-left:6px;
-  text-shadow:0 0 10px #00ff88,0 0 20px #00ff88;
-}
-</style>
+        /* Social Media Section */
+        .social-section {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .social-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .social-card {
+            background: rgba(20, 20, 20, 0.85);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            backdrop-filter: blur(8px);
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ff41;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
+        }
+
+        .social-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #00ff41;
+        }
+
+        .social-name {
+            font-size: 1.3rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+            border-top: 1px solid rgba(0, 255, 65, 0.2);
+            margin-top: 80px;
+            width: 100%;
+            max-width: 800px;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fall {
+            0% {
+                transform: translateY(-10%);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(200%);
+                opacity: 0;
+            }
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+            }
+            to {
+                box-shadow: 0 0 15px #00ff41, 0 0 30px #00ff41, 0 0 40px #00ff41;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo-img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .welcome-text {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+            
+            .social-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .matrix-column {
+                font-size: 12px;
+                width: 16px;
+            }
+            
+            .social-card {
+                padding: 20px;
+            }
+            
+            .header {
+                margin-bottom: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .welcome-text {
+                font-size: 1.6rem;
+                margin-bottom: 30px;
+            }
+            
+            .social-container {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .matrix-column {
+                font-size: 10px;
+                width: 14px;
+            }
+            
+            .social-card {
+                padding: 18px;
+            }
+            
+            .social-icon {
+                font-size: 2rem;
+            }
+            
+            .footer {
+                padding: 20px;
+                margin-top: 60px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .logo-img {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .welcome-text {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-<div id="bg">
-  <div class="grid"></div>
-  <div class="rain"></div>
-</div>
+    <!-- Digital Rain Background -->
+    <div class="matrix-background" id="matrixBackground"></div>
 
-<div class="container">
-  <div class="avatar">JH</div>
-  <h1 class="glitch" data-text="Jankiz Hex">Jankiz Hex</h1>
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="header">
+            <div class="logo-img-container">
+                <img src="555.jpg" alt="JANKIZ" class="logo-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"150\" height=\"150\"><rect width=\"100%\" height=\"100%\" fill=\"#000\"/><text x=\"50%\" y=\"50%\" text-anchor=\"middle\" dy=\".3em\" font-size=\"20\" fill=\"%2300ff41\">JANKIZ</text></svg>'">
+            </div>
+            <h1 class="welcome-text">مرحباً بكم في موقعي</h1>
+        </header>
 
-  <div class="links">
-    <a class="link instagram" href="https://www.instagram.com/jankiz.hex?igsh=djRnMDF1b2t6dndk" target="_blank">
-      <i class="fab fa-instagram"></i> إنستقرام
-    </a>
+        <!-- Social Media Section -->
+        <section class="social-section">
+            <div class="social-container">
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/jankiz.hex?igsh=djRnMDF1b2t6dndk" target="_blank" class="social-card">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3 class="social-name">Instagram</h3>
+                </a>
 
-    <a class="link youtube" href="https://youtube.com/@jankizhex7789?si=ASnSoM7vWUNJuBlw" target="_blank">
-      <i class="fab fa-youtube"></i> يوتيوب
-    </a>
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@.v2.jankiz?_r=1&_t=ZM-93E52dJ09yG" target="_blank" class="social-card">
+                    <div class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3 class="social-name">TikTok</h3>
+                </a>
 
-    <a class="link telegram" href="https://t.me/HexJankiz1111" target="_blank">
-      <i class="fab fa-telegram"></i> تيليجرام
-    </a>
+                <!-- YouTube -->
+                <a href="https://youtube.com/@jankizhex7789?si=VXHuC-0hx6zUIGfT" target="_blank" class="social-card">
+                    <div class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3 class="social-name">YouTube</h3>
+                </a>
 
-    <a class="link whatsapp" href="https://wa.me/qr/MTTLSETP2JWRG1" target="_blank">
-      <i class="fab fa-whatsapp"></i> واتساب
-    </a>
-  </div>
+                <!-- Telegram -->
+                <a href="https://t.me/HexJankiz1111" target="_blank" class="social-card">
+                    <div class="social-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3 class="social-name">Telegram</h3>
+                </a>
+            </div>
+        </section>
 
-  <footer>
-    Jankiz Hex 2026 <span class="verify">✔</span>
-  </footer>
-</div>
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2023</p>
+        </footer>
+    </div>
 
-<!-- حماية JavaScript قوية -->
-<script>
-(function(){
-  // منع الزر الأيمن
-  document.addEventListener("contextmenu", e => e.preventDefault());
+    <script>
+        // Create Digital Rain Effect
+        function createMatrixBackground() {
+            const matrixBackground = document.getElementById('matrixBackground');
+            const numColumns = Math.floor(window.innerWidth / 25);
+            
+            for (let i = 0; i < 2; i++) {
+                const pattern = document.createElement('div');
+                pattern.className = 'matrix-pattern';
+                
+                for (let j = 0; j < numColumns; j++) {
+                    const column = document.createElement('div');
+                    column.className = 'matrix-column';
+                    
+                    column.style.left = (j * 25) + 'px';
+                    
+                    const delay = -Math.random() * 5;
+                    const duration = 2 + Math.random() * 3;
+                    column.style.animationDelay = delay + 's';
+                    column.style.animationDuration = duration + 's';
+                    
+                    const contentTypes = [
+                        "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()アイウエオカキクケコサシスセソタチツテト",
+                        "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|;:,.<>?",
+                        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+                    ];
+                    
+                    const randomContent = contentTypes[Math.floor(Math.random() * contentTypes.length)];
+                    
+                    const beforeStyle = document.createElement('style');
+                    beforeStyle.textContent = `
+                        .matrix-column:nth-child(${j + 1})::before {
+                            content: "${randomContent}";
+                        }
+                    `;
+                    document.head.appendChild(beforeStyle);
+                    
+                    pattern.appendChild(column);
+                }
+                
+                matrixBackground.appendChild(pattern);
+            }
+        }
 
-  // منع بعض الاختصارات
-  document.addEventListener("keydown", function(e){
-    if(e.ctrlKey && (e.key=="u" || e.key=="s" || e.key=="i" || e.key=="c")){
-      e.preventDefault();
-      alert("🚫 هذا الموقع محمي");
-    }
-    if(e.shiftKey && e.key=="I"){
-      e.preventDefault();
-      alert("🚫 الوصول مرفوض");
-    }
-  });
+        // Initialize effect on page load
+        document.addEventListener('DOMContentLoaded', createMatrixBackground);
+        
+        // Recreate effect on window resize
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                const matrixBackground = document.getElementById('matrixBackground');
+                matrixBackground.innerHTML = '';
+                createMatrixBackground();
+            }, 250);
+        });
 
-  // كشف أدوات المطور
-  setInterval(function(){
-    var t = Date.now();
-    debugger;
-    if(Date.now() - t > 100){
-      document.body.innerHTML =
-        "<h1 style='color:red;text-align:center;margin-top:40px'>🚫 Access Denied</h1>";
-    }
-  }, 1200);
+        // Optimize for mobile
+        function optimizeForMobile() {
+            const isMobile = window.innerWidth <= 768;
+            const columns = document.querySelectorAll('.matrix-column');
+            
+            if (isMobile) {
+                columns.forEach(column => {
+                    column.style.animationDuration = (parseFloat(column.style.animationDuration) * 1.5) + 's';
+                });
+            }
+        }
 
-  // منع التشغيل المحلي
-  if(location.protocol === "file:"){
-    document.body.innerHTML =
-      "<h1 style='color:red;text-align:center;margin-top:40px'>🚫 لا يمكن تشغيل الموقع محليًا</h1>";
-  }
-})();
-</script>
+        window.addEventListener('load', optimizeForMobile);
+        window.addEventListener('resize', optimizeForMobile);
+    </script>
 </body>
 </html>
